@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-configmap
+data:
+  CONNECTIONSTRINGS__PGCONNECTION: |
+    server={{- include "getValueFromSecret" (dict "Namespace" .Release.Namespace "Name" "pg-server-secret" "Length" 10 "Key" "server")  -}}
+
