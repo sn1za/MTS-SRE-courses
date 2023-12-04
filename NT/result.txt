@@ -1,0 +1,67 @@
+ k6 run script.js
+
+          /\      |‾‾| /‾‾/   /‾‾/
+     /\  /  \     |  |/  /   /  /
+    /  \/    \    |     (   /   ‾‾\
+   /          \   |  |\  \ |  (‾)  |
+  / __________ \  |__| \__\ \_____/ .io
+
+WARN[0000] There were unknown fields in the options exported in the script  error="json: unknown field \"max_vus\""
+  execution: local
+     script: script.js
+     output: -
+
+  scenarios: (100.00%) 1 scenario, 100 max VUs, 5m30s max duration (incl. graceful stop):
+           * default: Up to 100 looping VUs for 5m0s over 3 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+
+     █ /Forecast/{cityId}
+
+       ✗ Success
+        ↳  0% — ✓ 0 / ✗ 6933
+
+     █ /WeatherForecast
+
+       ✓ Success
+
+     █ /Forecast
+
+       ✓ Success
+
+     █ /Forecast/{id}
+
+       ✗ Success
+        ↳  50% — ✓ 6933 / ✗ 6933
+
+     █ /Cities/{id}
+
+       ✗ Success
+        ↳  0% — ✓ 0 / ✗ 13866
+
+     █ /Cities
+
+       ✗ Success
+        ↳  50% — ✓ 6933 / ✗ 6933
+
+     checks.........................: 44.44% ✓ 27732      ✗ 34665
+     data_received..................: 84 MB  278 kB/s
+     data_sent......................: 11 MB  35 kB/s
+     group_duration.................: avg=397.92ms min=82.25ms med=296.7ms  max=31.36s   p(90)=623.19ms p(95)=902.1ms
+     http_req_blocked...............: avg=4.22ms   min=871ns   med=3.37µs   max=29.33s   p(90)=6.53µs   p(95)=8.7µs
+     http_req_connecting............: avg=4.22ms   min=0s      med=0s       max=29.33s   p(90)=0s       p(95)=0s
+     http_req_duration..............: avg=227.42ms min=81.58ms med=115.71ms max=31.36s   p(90)=375.57ms p(95)=529.78ms
+       { expected_response:true }...: avg=290.68ms min=83.11ms med=126.46ms max=31.36s   p(90)=505.85ms p(95)=997.7ms
+     http_req_failed................: 55.55% ✓ 34665      ✗ 27732
+     http_req_receiving.............: avg=1.82ms   min=11.21µs med=130.87µs max=21.47s   p(90)=768.58µs p(95)=1.1ms
+     http_req_sending...............: avg=27.12µs  min=5.77µs  med=17.22µs  max=845.15µs p(90)=53.48µs  p(95)=68.12µs
+     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s       max=0s       p(90)=0s       p(95)=0s
+     http_req_waiting...............: avg=225.57ms min=81.51ms med=115.23ms max=30.71s   p(90)=373.8ms  p(95)=519.31ms
+     http_reqs......................: 62397  207.747934/s
+     iteration_duration.............: avg=2.38s    min=1.07s   med=1.78s    max=32.94s   p(90)=3.62s    p(95)=4.19s
+     iterations.....................: 6933   23.083104/s
+     vus............................: 3      min=3        max=100
+     vus_max........................: 100    min=100      max=100
+
+
+running (5m00.3s), 000/100 VUs, 6933 complete and 0 interrupted iterations
+default ✓ [======================================] 000/100 VUs  5m0s
